@@ -21,3 +21,4 @@ export const generateContacts = async (number) => {
     console.log('Помилка при оновленні контактів:', err);
   }
 };
+generateContacts(4);

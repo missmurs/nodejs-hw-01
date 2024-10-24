@@ -1,8 +1,12 @@
-import { generateContacts } from '../scripts/generateContacts.js';
+import { createFakeContact } from '../utils/createFakeContact.js';
+import { readContacts } from '../utils/readContacts.js';
+import { writeContacts } from '../utils/writeContacts.js';
 
 export const addOneContact = async () => {
+  const generatedContact = createFakeContact();
   try {
-    await generateContacts(1);
+    const updatedContacts = await readContacts();
+    await writeContacts([...updatedContacts, generatedContact]);
     console.log('Один контакт успішно доданий.');
   } catch (err) {
     console.error('Помилка при додаванні контакту:', err);
